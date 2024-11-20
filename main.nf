@@ -1,4 +1,4 @@
-include { basecall } from "modules/basecall.nf"
+include { basecall } from "./modules/basecall.nf"
 
 params.outdir = "."
 params.pod5 = ""
