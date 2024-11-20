@@ -15,7 +15,7 @@ workflow {
     model = Channel.fromPath(params.model)
     if (params.demux != "") demux = Channel.fromPath(params.demux)
 
-    params.name
+    Channel.from(params.name)
     | combine(pod5)
     | combine(model)
     basecall()
