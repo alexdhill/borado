@@ -18,5 +18,5 @@ workflow {
     Channel.from(params.name)
     | combine(pod5)
     | combine(model)
-    basecall()
+    | basecall()
 }
