@@ -1,5 +1,6 @@
 process basecall {
     publishDir "${params.outdir}/reads", mode: 'copy', overwrite: params.force
+    container "genomicpariscentre/dorado:0.8.3"
     cpus 24
     memory '128 GB'
     label 'with_gpus'
