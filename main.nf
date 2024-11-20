@@ -1,6 +1,7 @@
 include { basecall } from "./modules/basecall.nf"
 
 params.outdir = "."
+params.force = false
 params.pod5 = ""
 if (params.pod5 == "") throw new IllegalArgumentException("Must provide a POD5")
 params.model = ""
@@ -14,5 +15,8 @@ workflow {
     model = Channel.fromPath(params.model)
     if (params.demux != "") demux = Channel.fromPath(params.demux)
 
-    basecall(params.name, pod5, model)
+    params.name
+    | combine(pod5)
+    | combine(model)
+    basecall()
 }
